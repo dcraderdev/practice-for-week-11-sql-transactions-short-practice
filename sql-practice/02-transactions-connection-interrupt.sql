@@ -1,44 +1,51 @@
--- Balance Transfer Transactions
--- Simulate Connection Loss
-BEGIN TRANSACTION;
+-- -- Balance Transfer Transactions
+-- -- Simulate Connection Loss
+-- BEGIN TRANSACTION;
 
-  -- Transfer 200 from Amy to Rose
-  UPDATE accounts
-  SET balance = balance + 200
-  WHERE (
-      first_name = 'Rose'
-      AND last_name = 'Tyler'
-    );
-  UPDATE accounts
-  SET balance = balance - 200
-  WHERE (
-      first_name = 'Amy'
-      AND last_name = 'Pond'
-    );
-  SAVEPOINT amy_to_rose;
+--   -- Transfer 200 from Amy to Rose
+--   UPDATE accounts
+--   SET balance = balance + 200
+--   WHERE (
+--       first_name = 'Rose'
+--       AND last_name = 'Tyler'
+--     );
+--   UPDATE accounts
+--   SET balance = balance - 200
+--   WHERE (
+--       first_name = 'Amy'
+--       AND last_name = 'Pond'
+--     );
+--   SAVEPOINT amy_to_rose;
 
-  -- Transfer 200 from Martha to Rose
-  UPDATE accounts
-  SET balance = balance + 200
-  WHERE (
-      first_name = 'Rose'
-      AND last_name = 'Tyler'
-    );
-  UPDATE accounts
-  SET balance = balance - 200
-  WHERE (
-      first_name = 'Martha'
-      AND last_name = 'Jones'
-    );
-  SAVEPOINT martha_to_rose;
+--   -- Transfer 200 from Martha to Rose
+--   UPDATE accounts
+--   SET balance = balance + 200
+--   WHERE (
+--       first_name = 'Rose'
+--       AND last_name = 'Tyler'
+--     );
+--   UPDATE accounts
+--   SET balance = balance - 200
+--   WHERE (
+--       first_name = 'Martha'
+--       AND last_name = 'Jones'
+--     );
+--   SAVEPOINT martha_to_rose;
 
-  -- Transfer 200 from Donna to Rose
-  UPDATE accounts
-  SET balance = balance + 200
-  WHERE (
-      first_name = 'Rose'
-      AND last_name = 'Tyler'
-    );
+--   -- Transfer 200 from Donna to Rose
+--   UPDATE accounts
+--   SET balance = balance + 200
+--   WHERE (
+--       first_name = 'Rose'
+--       AND last_name = 'Tyler'
+--     );
+
+
+
+ROLLBACK TO martha_to_rose;
+COMMIT;
+
+-- select * from Accounts;
 
 
   -- -- Simulation of connection loss
